@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Коммуна</title>
+
+  <!-- jQuery -->
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+
+  <!-- Bootstrap -->
+  <link href='http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css' rel='stylesheet' media='screen'>
+  <script src='http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js'></script>
+
+  <style>
+body {
+    font-family: Georgia, serif;
+}
+.header {
+    color: #8E1816;
+    text-align: center;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 15%;
+}
+.header h1 {
+    color: #8E1816;
+    font-size: 42px;
+    margin: 50px 0 25px 0;
+}
+.header ul {
+    display: inline-block;
+    margin: 0 auto;
+    margin-top: -10px;
+}
+.header a {
+    color: #711311;
+}
+.header a:hover {
+    background-color: #fcebeb !important;
+}
+
+.communa-color {
+    color: #8E1816;
+}
+a.communa-color:hover {
+    color: #4D0908;
+}
+
+.section {
+    margin-top: 30%;
+}
+.section h1 {
+    color: #8E1816;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+#people a, #projects a {
+    display: inline-block;
+    font-size: 50px;
+    margin: 15px;
+}
+#contacts p, #info p {
+    font-family: "Times New Roman", serif;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+#to_top {
+    position: fixed;
+    width: 100px;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+}
+.to_top_hover, #to_top:hover {
+    background: #fcebeb;
+    opacity: 0.75 !important;
+    cursor: pointer;
+}
+#to_top i {
+    position: fixed;
+    top: calc(50% - 7px);
+    left: 43px;
+}
+
+#footer {
+    margin-top: 40%;
+}
+  </style>
+  <script>
+$(function() {
+    function scrollTo(el) {
+        $('#to_top').addClass('to_top_hover');
+
+        var scrollPos = el.offset().top,
+            elHeight = el.height(),
+            windowHeight = $(window).height();
+        if (elHeight + 30 < windowHeight) {
+            scrollPos -= (windowHeight - elHeight) / 2 - 30;
+        }
+
+        $('body').animate({
+            scrollTop: scrollPos
+        }, 300, function() {
+            $('#to_top').removeClass('to_top_hover');
+        });
+    }
+
+    ['projects', 'people', 'info', 'contacts'].forEach(function(id) {
+        $('a[href="#' + id + '"]').click(function() {
+            return scrollTo($('#' + id)), false;
+        });
+    });
+
+    $('#to_top').click(function() {
+        $('body').animate({
+            scrollTop: 0
+        }, 300);
+    });
+});
+  </script>
+</head>
+
+<body>
+
+<div id='to_top' title='К меню'><i class='icon-arrow-up'></i></div>
+
+<div class='header'>
+  <h1>Коммуна</h1>
+  <hr>
+  <ul class='nav nav-pills'>
+    <li><a href='#projects'>Проекты</a></li>
+    <li><a href='#people'>Люди</a></li>
+    <li><a href='#info'>О Коммуне</a></li>
+    <li><a href='#contacts'>Контакты</a></li>
+  </ul>
+</div>
+
+
+<div class='container-fluid'>
+  <div id='projects' class='section row-fluid text-center'>
+    <div class='span6 offset3'>
+      <h1>Проекты</h1>
+      <div>
+        <a href='#info' class='communa-color'>Коммуна</a>
+        <a href='projects/wiki.js'>wiki.js</a>
+        <a href='projects/codex_hardcorius'>Codex Hardcorius</a>
+      </div>
+    </div>
+  </div>
+
+  <div id='people' class='section row-fluid text-center'>
+    <div class='span6 offset3'>
+      <h1>Люди</h1>
+      <div>
+        <a href='people/ruliov'>Александр Рулёв</a>
+      </div>
+    </div>
+  </div>
+
+  <div id='info' class='section row-fluid'>
+    <div class='span6 offset3'>
+      <h1 class='text-center'>О Коммуне</h1>
+      <p>Привет!</p>
+      <p>Это веб-страничка проекта <span class='communa-color'>«Коммуна»</span>.</p>
+      <p>У него пока нет чёткого определения и он состоит лишь из одного участника.</p>
+      <p>Но доподлинно известно, что его участники занимаются интересным делом.</p>
+    </div>
+  </div>
+
+  <div id='contacts' class='section row-fluid text-center'>
+    <div class='span6 offset3'>
+      <h1>Контакты</h1>
+      <p><a href='mailto:rulix.exec@gmail.com'>rulix.exec@gmail.com</a></p>
+      <p>Или же свяжитесь с любым <a href='#people' class='communa-color'>участником проекта</a>.</p>
+    </div>
+  </div>
+
+  <div id='footer' class='top-margin row-fluid text-center'>
+    <small>Писать всякие глупости в footer'е модно. Привет, я Какао! Капитан Какао!</small>
+  </div>
+</div>
+
+</body>
+</html>

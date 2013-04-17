@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Коммуна</title>
+
+  <!-- jQuery -->
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+
+  <!-- Bootstrap -->
+  <link href='http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css' rel='stylesheet' media='screen'>
+  <script src='http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js'></script>
+
+  <style>
+body {
+    font-family: Georgia, serif;
+}
+.header {
+    color: #8E1816;
+    text-align: center;
+    width: 40%;
+    margin: 0 auto;
+}
+.header h1 {
+    color: #8E1816;
+    font-size: 42px;
+    margin: 50px 0 25px 0;
+}
+.header ul {
+    display: inline-block;
+    margin: 0 auto;
+    margin-top: -10px;
+}
+.header a {
+    color: #711311;
+}
+.header a:hover {
+    background-color: #fcebeb !important;
+}
+
+.communa-color {
+    color: #8E1816;
+}
+a.communa-color:hover {
+    color: #4D0908;
+}
+
+.section h1 {
+    color: #8E1816;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+#info p {
+    font-family: "Times New Roman", serif;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+#footer {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+}
+
+#back {
+    width: 100px;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    opacity: 0.75;
+}
+#back:hover {
+    background: #fcebeb;
+    cursor: pointer;
+}
+#back i {
+    position: relative;
+    top: calc(50% - 7px);
+    left: 43px;
+}
+  </style>
+</head>
+
+<body>
+
+<a href='/' title='На главную'><div id='back'><i class='icon-arrow-left'></i></div></a>
+
+<div class='header'>
+  <h1>wiki.js</h1>
+  <hr>
+</div>
+
+<div class='container-fluid'>
+  <div id='info' class='section row-fluid'>
+    <div class='span6 offset3'>
+      <p>Не слишком чтобы и проект, просто чтобы не смотрелось совсем пусто.</p>
+      <p>Исходники можно найти на <a href='https://github.com/Rulexec/wiki.js'>гитхабе</a>. Пощупать можно почти <a href='http://rulexec.github.io/wiki.js/'>там же</a>. Не советую использовать, т.к. данные хранятся локально и при обновлениях я могу запросто всё сломать.</p>
+      <p>Как получилось. Искал, что бы такое сделать, наткнулся на <a href='http://artsofte.ru/vacancies/javascript'>вакансию от Artsofte</a>. Там было тестовое задание, создать «wiki-среду для хранения и редактирования текстов на javascript».</p>
+      <p>Ну вот, собственно, сделал. А они даже не ответили.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
