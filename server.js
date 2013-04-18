@@ -19,9 +19,20 @@ function webFile(file) {
         ).pipe(res);
     };
 }
+
+var ETag;
 function page(name) {
     var data = generate.render(name);
+    var createdDate = new Date().toUTCString();
+    var maxAge = 2 * 24 * 60 * 60;
+    var maxAgeHeader = 'public, max-age=' + maxAge.toString();
+  
     return function(req, res) {
+        if (!res.getHeader('ETag')) res.setHeader('ETag', ETag);
+        if (!res.getHeader('Date')) res.setHeader('Date', new Date().toUTCString());
+        if (!res.getHeader('Cache-Control')) res.setHeader('Cache-Control', maxAgeHeader);
+        if (!res.getHeader('Last-Modified')) res.setHeader('Last-Modified', createdDate);
+
         res.end(data);
     };
 }
@@ -54,7 +65,10 @@ exports.start = function(options) {
         };
     }
 
-    start();
+    require('crypto').randomBytes(8, function(ex, buf) {
+        ETag = buf.toString('hex');
 
-    app.listen(options.port);
+        start();
+        app.listen(options.port);
+    });
 }
