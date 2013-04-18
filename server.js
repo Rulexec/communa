@@ -26,6 +26,7 @@ function start() {
 app = express();
 app.get('/', webFile('index.html'));
 
+app.get('/projects/code_hardcorius', webFile('projects/code_hardcorius.html'));
 app.get('/projects/wiki.js', webFile('projects/wiki.js.html'));
 app.get('/projects/codex_hardcorius', webFile('projects/codex_hardcorius.html'));
 
