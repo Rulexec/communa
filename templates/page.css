@@ -1,0 +1,67 @@
+body {
+    font-family: Georgia, serif;
+}
+.header {
+    color: #8E1816;
+    text-align: center;
+    width: 40%;
+    margin: 0 auto;
+}
+.header h1 {
+    color: #8E1816;
+    font-size: 42px;
+    margin: 50px 0 25px 0;
+}
+.header ul {
+    display: inline-block;
+    margin: 0 auto;
+    margin-top: -10px;
+}
+.header a {
+    color: #711311;
+}
+.header a:hover {
+    background-color: #fcebeb !important;
+}
+
+.communa-color {
+    color: #8E1816;
+}
+a.communa-color:hover {
+    color: #4D0908;
+}
+
+.section h1 {
+    color: #8E1816;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+#info p {
+    font-family: "Times New Roman", serif;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+#footer {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+}
+
+#back {
+    width: 100px;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    opacity: 0.75;
+}
+#back:hover {
+    background: #fcebeb;
+    cursor: pointer;
+}
+#back i {
+    position: relative;
+    top: calc(50% - 7px);
+    left: 43px;
+}

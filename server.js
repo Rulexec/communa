@@ -2,6 +2,7 @@ var express = require('express'),
     fs = require('fs'),
     send = require('send'),
 
+    generate = require('./generate'),
     aws = require('./aws');
 
 var awsFile = function(file) {
@@ -18,19 +19,25 @@ function webFile(file) {
         ).pipe(res);
     };
 }
+function page(name) {
+    var data = generate.render(name);
+    return function(req, res) {
+        res.end(data);
+    };
+}
 
 var app;
 
 function start() {
 
 app = express();
-app.get('/', webFile('index.html'));
+app.get('/', page('index.html'));
 
-app.get('/projects/code_hardcorius', webFile('projects/code_hardcorius.html'));
-app.get('/projects/wiki.js', webFile('projects/wiki.js.html'));
-app.get('/projects/codex_hardcorius', webFile('projects/codex_hardcorius.html'));
+app.get('/projects/code_hardcorius', page('projects/code_hardcorius.html'));
+app.get('/projects/wiki.js', page('projects/wiki.js.html'));
+app.get('/projects/codex_hardcorius', page('projects/codex_hardcorius.html'));
 
-app.get('/people/ruliov', webFile('people/ruliov.html'));
+app.get('/people/ruliov', page('people/ruliov.html'));
 
 app.get('/favicon.ico', awsFile('favicon.ico'));
 
@@ -39,6 +46,12 @@ app.get('/favicon.ico', awsFile('favicon.ico'));
 exports.start = function(options) {
     if (options.local) {
         awsFile = webFile;
+        page = function(name) {
+            return function(req, res) {
+                var data = generate.render(name);
+                res.end(data);
+            };
+        };
     }
 
     start();

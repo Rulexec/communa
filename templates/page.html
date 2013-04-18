@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+
+{% block title %}{% block page_title %}{% endblock %} — Коммуна{% endblock %}
+
+{% block head %}
+<style>{% include 'main.css' %}</style>
+<style>{% include 'page.css' %}</style>
+{% endblock %}
+
+{% block body %}
+
+<a href='/' title='На главную'><div id='back'><i class='icon-arrow-left'></i></div></a>
+
+<div class='header'>
+  <h1>{% block page_title %}{% endblock %}</h1>
+  <hr>
+</div>
+
+<div class='container-fluid'>
+  <div id='info' class='section row-fluid'>
+    <div class='span6 offset3'>
+      {% block page_content %}{% endblock %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

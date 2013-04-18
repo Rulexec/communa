@@ -1,0 +1,40 @@
+.header {
+    margin-top: 15%;
+}
+.section {
+    margin-top: 30%;
+}
+
+#people a, #projects a {
+    display: inline-block;
+    font-size: 50px;
+    margin: 15px;
+}
+#contacts p, #info p {
+    font-family: "Times New Roman", serif;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+#to_top {
+    position: fixed;
+    width: 100px;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+}
+.to_top_hover, #to_top:hover {
+    background: #fcebeb;
+    opacity: 0.75 !important;
+    cursor: pointer;
+}
+#to_top i {
+    position: fixed;
+    top: calc(50% - 7px);
+    left: 43px;
+}
+
+#footer {
+    margin-top: 40%;
+}
