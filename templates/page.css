@@ -1,7 +1,7 @@
 #info p {
     font-family: "Times New Roman", serif;
-    font-size: 20px;
-    margin-bottom: 25px;
+    font-size: 1.4em;
+    margin-bottom: 1em;
 }
 
 #footer {
@@ -11,7 +11,7 @@
 }
 
 #back {
-    width: 100px;
+    width: 10%;
     height: 100%;
     position: fixed;
     top: 0px;
@@ -23,7 +23,7 @@
     cursor: pointer;
 }
 #back i {
-    position: relative;
+    position: absolute;
     top: calc(50% - 7px);
-    left: 43px;
+    left: calc(50% - 7px);
 }

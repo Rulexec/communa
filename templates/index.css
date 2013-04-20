@@ -7,18 +7,18 @@
 
 #people a, #projects a {
     display: inline-block;
-    font-size: 50px;
-    margin: 15px;
+    font-size: 3em;
+    margin: 0.3em;
 }
 #contacts p, #info p {
     font-family: "Times New Roman", serif;
-    font-size: 20px;
-    margin-bottom: 25px;
+    font-size: 1.4em;
+    margin-bottom: 1em;
 }
 
 #to_top {
     position: fixed;
-    width: 100px;
+    width: 10%;
     height: 100%;
     top: 0px;
     left: 0px;
@@ -30,9 +30,9 @@
     cursor: pointer;
 }
 #to_top i {
-    position: fixed;
+    position: absolute;
     top: calc(50% - 7px);
-    left: 43px;
+    left: calc(50% - 7px);
 }
 
 #footer {
