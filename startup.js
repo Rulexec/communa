@@ -1,9 +1,7 @@
-var server = require('./server');
-
-var LOCAL = Boolean(process.env.LOCAL) && process.env.LOCAL !== 'false';
-var PORT = process.env.PORT || 5000;
+var server = require('./server'),
+    CONFIG = require('./config');
 
 server.start({
-    port: PORT,
-    local: LOCAL
+    port: CONFIG.PORT,
+    local: CONFIG.LOCAL
 });
