@@ -45,6 +45,7 @@ app = express();
 app.get('/', page('index.html'));
 app.get('/projects/', page('projects.html'));
 
+app.get('/projects/tags', page('projects/tags.html'));
 app.get('/projects/code_hardcorius', page('projects/code_hardcorius.html'));
 app.get('/projects/wiki.js', page('projects/wiki.js.html'));
 app.get('/projects/codex_hardcorius', page('projects/codex_hardcorius.html'));
