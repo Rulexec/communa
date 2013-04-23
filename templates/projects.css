@@ -1,0 +1,38 @@
+body {
+    font-family: Georgia, serif;
+}
+.communa-color {
+    color: #8E1816;
+}
+a.communa-color:hover {
+    color: #4D0908;
+}
+
+.project-card h1 {
+    color: #8E1816;
+    font-size: 1.5em;
+    margin-top: -0.5em;
+    float: left;
+}
+.project-card h1 a {
+    color: inherit;
+}
+.project-card h1 a:hover {
+    color: #4D0908;
+}
+
+.project-card .description {
+    float: right;
+    font-size: 1em;
+    font-style: italic;
+}
+.project-card .info {
+    clear: both;
+}
+.project-card .info p,li {
+    font-family: "Times New Roman", serif;
+    font-size: 1em;
+    margin-bottom: 1em;
+}
+
+{% include 'back.css' %}

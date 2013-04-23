@@ -5,6 +5,16 @@
     margin-top: 30%;
 }
 
+#projects h1 a {
+    color: inherit;
+    font-size: inherit;
+    border-bottom: 1px dotted;
+}
+#projects h1 a:hover {
+    color: #4D0908;
+    text-decoration: none;
+    border-bottom: 1px solid;
+}
 #people a, #projects a {
     display: inline-block;
     font-size: 3em;
