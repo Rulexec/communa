@@ -1,76 +1,59 @@
 var express = require('express'),
-    fs = require('fs'),
-    send = require('send'),
+    serverUtil = require('./server_util'),
 
-    generate = require('./generate'),
-    aws = require('./aws');
+    awsFile = serverUtil.awsFile,
+    webFile = serverUtil.webFile,
+    page = serverUtil.page;
 
-var awsFile = function(file) {
-    return function(req, res) {
-        res.status(301); // moved permanently
-        res.location(aws.url(file))
-        res.end();
+exports.start = function(options, callback) {
+
+if (options.local) {
+    // replace aws redirect to local file send
+    // and replace page function to non-caching version
+    awsFile = webFile;
+    page = serverUtil._pageLocal;
+}
+
+var app = express();
+
+var staticUrls = {
+    '/': page('index.html'),
+    '/favicon.ico': awsFile('favicon.ico'),
+
+    '/projects/': page('projects.html'),
+
+    '/projects/tags': page('projects/tags.html'),
+    '/projects/code_hardcorius': page('projects/code_hardcorius.html'),
+    '/projects/wiki.js': page('projects/wiki.js.html'),
+    '/projects/codex_hardcorius': page('projects/codex_hardcorius.html'),
+
+    '/people/ruliov': page('people/ruliov.html')
+};
+
+app.use(function(req, res, next) {
+    var handler = staticUrls[req.path];
+    if (typeof handler === 'function' && req.method === 'GET' ||
+        handler && (handler = handler[req.method]))
+    {
+        handler(req, res);
+    } else {
+        next();
     }
-}
-function webFile(file) {
-    return function(req, res){
-        send(req, __dirname + '/web/' + file
-        ).maxage(24 * 60 * 60 * 1000 // day
-        ).pipe(res);
-    };
-}
+});
 
-var ETag;
-function page(name) {
-    var data = generate.render(name);
-    var createdDate = new Date().toUTCString();
-    var maxAge = 2 * 24 * 60 * 60;
-    var maxAgeHeader = 'public, max-age=' + maxAge.toString();
-  
-    return function(req, res) {
-        if (!res.getHeader('ETag')) res.setHeader('ETag', ETag);
-        if (!res.getHeader('Date')) res.setHeader('Date', new Date().toUTCString());
-        if (!res.getHeader('Cache-Control')) res.setHeader('Cache-Control', maxAgeHeader);
-        if (!res.getHeader('Last-Modified')) res.setHeader('Last-Modified', createdDate);
+app.get('*', error404);
+app.use(function(req, res, next) {
+    res.status(405).end('405');
+});
 
-        res.end(data);
-    };
+function error404(req, res) {
+    res.status(404).end('404');
 }
 
-var app;
+serverUtil.start(function(error) {
+    if (error) return callback(error);
 
-function start() {
+    app.listen(options.port);
+});
 
-app = express();
-app.get('/', page('index.html'));
-app.get('/projects/', page('projects.html'));
-
-app.get('/projects/tags', page('projects/tags.html'));
-app.get('/projects/code_hardcorius', page('projects/code_hardcorius.html'));
-app.get('/projects/wiki.js', page('projects/wiki.js.html'));
-app.get('/projects/codex_hardcorius', page('projects/codex_hardcorius.html'));
-
-app.get('/people/ruliov', page('people/ruliov.html'));
-
-app.get('/favicon.ico', awsFile('favicon.ico'));
-
-}
-
-exports.start = function(options) {
-    if (options.local) {
-        awsFile = webFile;
-        page = function(name) {
-            return function(req, res) {
-                var data = generate.render(name);
-                res.end(data);
-            };
-        };
-    }
-
-    require('crypto').randomBytes(8, function(ex, buf) {
-        ETag = buf.toString('hex');
-
-        start();
-        app.listen(options.port);
-    });
-}
+};

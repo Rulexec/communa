@@ -1,1 +1,1 @@
-LOCAL=true node startup.js
+LOCAL=true exec node startup.js

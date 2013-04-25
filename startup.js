@@ -4,4 +4,14 @@ var server = require('./server'),
 server.start({
     port: CONFIG.PORT,
     local: CONFIG.LOCAL
+}, function(error) {
+    if (error) {
+        console.log('ERROR', error);
+        process.exit(1);
+    }
+});
+
+process.on('SIGTERM', function() {
+    console.log('bye!');
+    process.exit(0);
 });
