@@ -1,8 +1,8 @@
 $(function() {
     var now = Date.now();
 
-    $('.project-card .updates').each(function() {
-        $('li i:first', $(this)).each(function() {
+    $('.project-card .updates li').each(function() {
+        $('i:first', $(this)).each(function() {
             var i = $(this);
 
             var updateDate = new Date(i.text()).getTime();

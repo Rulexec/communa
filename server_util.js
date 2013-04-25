@@ -1,5 +1,5 @@
 var send = require('send'),
-    generate = require('./generate'),
+    template = require('./template'),
     aws = require('./aws');
 
 exports.awsFile = function(file) {
@@ -20,7 +20,7 @@ exports.webFile = function(file) {
 
 var ETag;
 exports.page = function(name) {
-    var data = generate.render(name);
+    var data = template.render(name);
     var createdDate = new Date().toUTCString();
     var maxAge = 2 * 24 * 60 * 60;
     var maxAgeHeader = 'public, max-age=' + maxAge.toString();
@@ -36,7 +36,20 @@ exports.page = function(name) {
 };
 exports._pageLocal = function(name) {
     return function(req, res) {
-        res.end(generate.render(name));
+        res.end(template.render(name));
+    };
+};
+
+exports.staticUrls = function(urls) {
+    return function(req, res, next) {
+        var handler = urls[req.path];
+        if (typeof handler === 'function' && req.method === 'GET' ||
+            handler && (handler = handler[req.method]))
+        {
+            handler(req, res);
+        } else {
+            next();
+        }
     };
 };
 

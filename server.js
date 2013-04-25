@@ -16,7 +16,7 @@ if (options.local) {
 
 var app = express();
 
-var staticUrls = {
+app.use(serverUtil.staticUrls({
     '/': page('index.html'),
     '/favicon.ico': awsFile('favicon.ico'),
 
@@ -29,18 +29,7 @@ var staticUrls = {
     '/projects/codex_hardcorius': page('projects/codex_hardcorius.html'),
 
     '/people/ruliov': page('people/ruliov.html')
-};
-
-app.use(function(req, res, next) {
-    var handler = staticUrls[req.path];
-    if (typeof handler === 'function' && req.method === 'GET' ||
-        handler && (handler = handler[req.method]))
-    {
-        handler(req, res);
-    } else {
-        next();
-    }
-});
+}));
 
 app.get('*', error404);
 app.use(function(req, res, next) {
