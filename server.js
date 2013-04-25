@@ -23,6 +23,7 @@ var staticUrls = {
     '/projects/': page('projects.html'),
 
     '/projects/tags': page('projects/tags.html'),
+    '/projects/codechat': page('projects/codechat.html'),
     '/projects/code_hardcorius': page('projects/code_hardcorius.html'),
     '/projects/wiki.js': page('projects/wiki.js.html'),
     '/projects/codex_hardcorius': page('projects/codex_hardcorius.html'),
