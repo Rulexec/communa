@@ -19,7 +19,7 @@ exports.webFile = function(file) {
 };
 
 var ETag;
-exports.page = function(name) {
+exports.page = function(name, args) {
     var data = template.render(name);
     var createdDate = new Date().toUTCString();
     var maxAge = 2 * 24 * 60 * 60;
@@ -36,7 +36,7 @@ exports.page = function(name) {
 };
 exports._pageLocal = function(name) {
     return function(req, res) {
-        res.end(template.render(name));
+        res.end(template._renderLocal(name));
     };
 };
 
