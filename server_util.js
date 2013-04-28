@@ -40,19 +40,6 @@ exports._pageLocal = function(name) {
     };
 };
 
-exports.staticUrls = function(urls) {
-    return function(req, res, next) {
-        var handler = urls[req.path];
-        if (typeof handler === 'function' && req.method === 'GET' ||
-            handler && (handler = handler[req.method]))
-        {
-            handler(req, res);
-        } else {
-            next();
-        }
-    };
-};
-
 exports.start = function(callback) {
     require('crypto').pseudoRandomBytes(8, function(ex, buf) {
         if (ex) return callback(ex);

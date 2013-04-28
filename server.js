@@ -1,4 +1,4 @@
-var express = require('express'),
+var photon = require('photon'),
     serverUtil = require('./server_util'),
 
     awsFile = serverUtil.awsFile,
@@ -14,9 +14,11 @@ if (options.local) {
     page = serverUtil._pageLocal;
 }
 
-var app = express();
+var app = photon(
+).use(photon.common()
+).extend(photon.routing());
 
-app.use(serverUtil.staticUrls({
+app.routeStatic({
     '/': page('index.html'),
     '/favicon.ico': awsFile('favicon.ico'),
 
@@ -29,9 +31,9 @@ app.use(serverUtil.staticUrls({
     '/projects/codex_hardcorius': page('projects/codex_hardcorius.html'),
 
     '/people/ruliov': page('people/ruliov.html')
-}));
+});
 
-app.get('*', error404);
+app.get(/^.*$/, error404);
 app.use(function(req, res, next) {
     res.status(405).end('405');
 });
