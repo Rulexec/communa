@@ -8,7 +8,7 @@
     "npm": "1.2.x"
   },
   "dependencies": {
-    "photon": ">=0.1.x",
+    "photon": "0.1.x",
     "send": "0.1.x",
 
     "nunjucks": "0.1.x"
