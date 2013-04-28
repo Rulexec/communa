@@ -22,7 +22,7 @@ var ETag;
 exports.page = function(name, args) {
     var data = template.render(name, args);
     var createdDate = new Date().toUTCString();
-    var maxAge = 2 * 24 * 60 * 60;
+    var maxAge = 18 * 60 * 60;
     var maxAgeHeader = 'public, max-age=' + maxAge.toString();
   
     return function(req, res) {
