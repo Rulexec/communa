@@ -11,51 +11,46 @@
 
 <a href='/' title='На главную'><div id='back'><i class='icon-arrow-left'></i></div></a>
 
+{%- macro card(project) -%}
+<div class='well project-card'>
+  <h1><a href='{% if project.id != 'communa' %}/projects/{{ project.id }}{% else %}/#info{% endif %}'>{{ project.name }}</a></h1>
+  {%- if project.description %}<p class='description'>{{ project.description }}</p>{% endif -%}
+  <div class='info'>
+    <ul class='updates'>
+{%- for update in project.updates -%}
+<li>{{ update }}</li>
+{%- endfor -%}
+    </ul>
+{%- if project.todo -%}
+    <p>todo:</p>
+    <ul>
+{%- for todo in project.todo -%}
+<li>{{ todo }}</li>
+{%- endfor -%}
+    </ul>
+{%- endif -%}
+  </div>
+</div>
+{%- endmacro -%}
+
 <div class='container-fluid' style='margin-top:20px'><div class='row-fluid'><div class='span8 offset2'>
   <div class='row-fluid'>
-    <div class='span6 well project-card'>
-      <h1><a href='/#info'>Коммуна</a></h1>
-      <p class='description'>Вымышленная организация</p>
-      <div class='info'>
-        <ul class='updates'>
-          <li><i>2013.04.23</i> — создание раздела <b>/projects/</b> с «карточками» проектов и их последними изменениями.</li>
-          <li><i>2013.04.17</i> — создание первой версии сайта.</li>
-        </ul>
-        <p>todo:</p>
-        <ul>
-          <li>Переверстать так, чтобы оно было более работающим в мобильных браузерах (в Android Browser и Opera Mini работает отвратно).</li>
-          <li><s class='muted'>Нужно заиспользовать что-то вроде базы данных и админки, чтобы не коммитить и не деплоить каждый раз при изменении контента.</s> — не нужно. Достаточно лишь вынести это куда-нибудь из html'а. Мы тут не движок сайтов <span class='communa-color'>Коммун</span> делаем, а единственный в своём роде. К тому же история изменений всех этих текстов была бы интересна в перспективе.</li>
-        </ul>
-      </div>
+    <div class='span6'>
+{%- for project in projects.success -%}
+<div class='row-fluid'>{{ card(project) }}</div>
+{%- endfor -%}
     </div>
     <div class='span6'>
-      <div class='row-fluid'>
-        <div class='well project-card'>
-          <h1><a href='/projects/tags'>&lt;Теги&gt;*</a></h1>
-          <p class='description'>Найти то, знаю что</p>
-          <div class='info'>
-            <ul class='updates'>
-              <li>
-                <p><i>2013.04.27</i> — создание пользователя<span class='muted'>*</span>, авторизация<span class='muted'>*</span>. Пока что показывается только тот список тегов, которые указал пользователь при регистрации. Осталось редактирование тегов, а потом много работы над интерфейсом.</p>
-                <p class='muted'>* — devmode, просто ввод нужного идентификатора/списка тегов.</p></li>
-              <li><i>2013.04.26</i> — реализован поиск (пересечение множеств). Осталось создание пользователей/редактирование их тегов.</li>
-              <li><i>2013.04.23</i> — старт проекта. Успешное ковыряние Redis.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class='row-fluid'>
-        <div class='well project-card'>
-          <h1><a href='/projects/codechat'>chat++</a></h1>
-          <p class='description'>say 'Hello, World!'</p>
-          <div class='info'>
-            <ul class='updates'>
-              <li><i>2013.04.25</i> — появление идеи в голове.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+{%- for project in projects.working -%}
+<div class='row-fluid'>{{ card(project) }}</div>
+{%- endfor -%}
     </div>
+  </div>
+  <hr>
+  <div class='row-fluid'>
+{%- for project in projects.dead -%}
+<div class='span6{% if loop.index0 % 2 == 0 %} next-row{% endif %}'>{{ card(project) }}</div>
+{%- endfor -%}
   </div>
 </div></div></div>
 

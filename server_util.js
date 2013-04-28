@@ -20,7 +20,7 @@ exports.webFile = function(file) {
 
 var ETag;
 exports.page = function(name, args) {
-    var data = template.render(name);
+    var data = template.render(name, args);
     var createdDate = new Date().toUTCString();
     var maxAge = 2 * 24 * 60 * 60;
     var maxAgeHeader = 'public, max-age=' + maxAge.toString();
@@ -34,9 +34,9 @@ exports.page = function(name, args) {
         res.end(data);
     };
 };
-exports._pageLocal = function(name) {
+exports._pageLocal = function(name, args) {
     return function(req, res) {
-        res.end(template._renderLocal(name));
+        res.end(template._renderLocal(name, args));
     };
 };
 

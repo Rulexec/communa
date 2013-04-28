@@ -35,4 +35,11 @@ a.communa-color:hover {
     margin-bottom: 1em;
 }
 
+hr {
+    border-top-color: #f0a3a1;
+}
+.span6.next-row {
+    margin-left: 0px;
+}
+
 {% include 'back.css' %}

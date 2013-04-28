@@ -3,7 +3,9 @@ var photon = require('photon'),
 
     awsFile = serverUtil.awsFile,
     webFile = serverUtil.webFile,
-    page = serverUtil.page;
+    page = serverUtil.page,
+
+    projects = require('./data/projects');
 
 exports.start = function(options, callback) {
 
@@ -19,18 +21,16 @@ var app = photon(
 ).extend(photon.routing());
 
 app.routeStatic({
-    '/': page('index.html'),
+    '/': page('index.html', {projects: projects.list}),
     '/favicon.ico': awsFile('favicon.ico'),
 
-    '/projects/': page('projects.html'),
-
-    '/projects/tags': page('projects/tags.html'),
-    '/projects/codechat': page('projects/codechat.html'),
-    '/projects/code_hardcorius': page('projects/code_hardcorius.html'),
-    '/projects/wiki.js': page('projects/wiki.js.html'),
-    '/projects/codex_hardcorius': page('projects/codex_hardcorius.html'),
+    '/projects/': page('projects.html', {projects: projects.status}),
 
     '/people/ruliov': page('people/ruliov.html')
+});
+
+projects.list.forEach(function(project) {
+    app.get('/projects/' + project.id, page('projects/' + project.id + '.html'));
 });
 
 app.get(/^.*$/, error404);
