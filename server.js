@@ -18,6 +18,7 @@ if (options.local) {
 
 var app = photon(
 ).use(photon.common()
+).use(photon.path()
 ).extend(photon.routing());
 
 app.routeStatic({
@@ -30,6 +31,8 @@ app.routeStatic({
 
     '/landing/etc': page('landing/etc.html')
 });
+
+app.get(RegExp('/landing/etc(?:\\?.*)'), page('landing/etc.html'));
 
 projects.list.forEach(function(project) {
     app.get('/projects/' + project.id, page('projects/' + project.id + '.html'));
