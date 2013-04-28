@@ -13,7 +13,7 @@
 
 {%- macro card(project) -%}
 <div class='well project-card'>
-  <h1><a href='{% if project.id != 'communa' %}/projects/{{ project.id }}{% else %}/#info{% endif %}'>{{ project.name }}</a></h1>
+  <h1><a href='{% if project.id != 'communa' %}/projects/{{ project.id }}{% else %}/#info{% endif %}'>{{ project.name | escape }}</a></h1>
   {%- if project.description %}<p class='description'>{{ project.description }}</p>{% endif -%}
   <div class='info'>
     <ul class='updates'>
