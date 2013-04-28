@@ -26,7 +26,9 @@ app.routeStatic({
 
     '/projects/': page('projects.html', {projects: projects.status}),
 
-    '/people/ruliov': page('people/ruliov.html')
+    '/people/ruliov': page('people/ruliov.html'),
+
+    '/landing/etc': page('landing/etc.html')
 });
 
 projects.list.forEach(function(project) {
