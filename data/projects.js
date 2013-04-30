@@ -2,6 +2,7 @@
 var list = exports.list = [
   {id: 'tags', name: 'Теги'},
   {id: 'photon.js', name: 'photon.js'},
+  {id: 'codechat', name: 'chat++'},
   {id: 'code_hardcorius', name: 'Code Hardcorius'},
   {id: 'wiki.js', name: 'wiki.js'},
   {id: 'codex_hardcorius', name: 'Codex Hardcorius'}
