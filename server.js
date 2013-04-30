@@ -2,7 +2,7 @@ var photon = require('photon'),
     serverUtil = require('./server_util'),
 
     awsFile = serverUtil.awsFile,
-    webFile = serverUtil.webFile,
+    staticFile = serverUtil.staticFile,
     page = serverUtil.page,
 
     projects = require('./data/projects');
@@ -12,7 +12,7 @@ exports.start = function(options, callback) {
 if (options.local) {
     // replace aws redirect to local file send
     // and replace page function to non-caching version
-    awsFile = webFile;
+    awsFile = staticFile;
     page = serverUtil._pageLocal;
 }
 
@@ -32,10 +32,16 @@ app.routeStatic({
     '/landing/etc': page('landing/etc.html')
 });
 
+// Landings with different ?queries (for statistics)
 app.get(RegExp('/landing/etc(?:\\?.*)'), page('landing/etc.html'));
 
+// Project pages
 projects.list.forEach(function(project) {
     app.get('/projects/' + project.id, page('projects/' + project.id + '.html'));
+});
+// Static files
+require('./data/static_files').forEach(function(file) {
+    app.get('/static/' + file, awsFile(file));
 });
 
 app.get(/^.*$/, error404);

@@ -9,10 +9,9 @@ exports.awsFile = function(file) {
         res.end();
     }
 };
-
-exports.webFile = function(file) {
+exports.staticFile = function(file) {
     return function(req, res){
-        send(req, __dirname + '/web/' + file
+        send(req, __dirname + '/static/' + file
         ).maxage(24 * 60 * 60 * 1000 // day
         ).pipe(res);
     };

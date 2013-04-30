@@ -1,3 +1,18 @@
+var nunjucks = require('nunjucks'),
+    awsUrl = require('../aws').url,
+
+    CONFIG = require('../config');
+
+if (CONFIG.LOCAL) awsUrl = function(url) {
+    return '/static/' + url;
+};
+
+function r(str) {
+    return new nunjucks.Template(str).render({
+        awsUrl: awsUrl
+    });
+}
+
 // for index.html
 var list = exports.list = [
   {id: 'tags', name: 'Теги'},
@@ -34,6 +49,7 @@ var status = exports.status = {
     id: 'tags', name: '<Теги>*',
     description: 'Найти то, знаю что',
     updates: [
+      r("<i>2013.04.30</i> — <a href='{{ awsUrl('images/tags/2013-04-30-root.png') }}'>перевёрстана главная страница</a>. Авторизация доработана. Так же реализована «подсказка», которая гарантированно кого-нибудь находит и каждый раз новая."),
       '<i>2013.04.28</i> — переведено на photon.js, добавление и удаление тегов пользователем. Теперь нужно работать над юзабельностью этого для людей.',
       "<p><i>2013.04.27</i> — создание пользователя<span class='muted'>*</span>, авторизация<span class='muted'>*</span>. Пока что показывается только тот список тегов, которые указал пользователь при регистрации. Осталось редактирование тегов, а потом много работы над интерфейсом.</p>" +
       "<p class='muted'>* — devmode, просто ввод нужного идентификатора/списка тегов.</p>",
