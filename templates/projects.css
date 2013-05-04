@@ -42,4 +42,12 @@ hr {
     margin-left: 0px;
 }
 
+.hide-switcher {
+    text-decoration: none;
+}
+.hide-switcher:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
 {% include 'back.css' %}

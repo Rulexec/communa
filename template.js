@@ -5,12 +5,26 @@ var nunjucks = require('nunjucks'),
 
 var env = new nunjucks.Environment(new nunjucks.FileSystemLoader('templates'));
 
+env.addFilter('subarray', function(arr, start, length) {
+    if (length !== undefined) {
+        return arr.slice(start, start + length);
+    } else {
+        return arr.slice(start);
+    }
+});
+
+function addDefaultArgs(args) {
+    merge(args, {
+        analytics: !CONFIG.LOCAL,
+        awsUrl: aws.url,
+    });
+}
+
 var cache = {};
 
 exports.render = function(name, args) {
     args === undefined && (args = {});
-    args.analytics = !CONFIG.LOCAL;
-    args.awsUrl = aws.url;
+    addDefaultArgs(args);
 
     var cached = cache[name];
 
@@ -22,8 +36,15 @@ exports.render = function(name, args) {
 };
 exports._renderLocal = function(name, args) {
     args === undefined && (args = {});
-    args.analytics = false;
-    args.awsUrl = aws.url;
+    addDefaultArgs(args);
 
     return env.getTemplate(name).render(args);
 };
+
+function merge(to, from) {
+    for (var name in from) {
+        if (from.hasOwnProperty(name) && to[name] === undefined) {
+            to[name] = from[name];
+        }
+    }
+}
