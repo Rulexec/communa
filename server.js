@@ -17,6 +17,7 @@ if (options.local) {
 }
 
 var app = photon(
+).use(photon.hostRedirect(options.host)
 ).use(photon.common()
 ).use(photon.path()
 ).extend(photon.routing());
