@@ -7,31 +7,41 @@
 <script>{% include 'projects.js' %}</script>
 {%- endblock %}
 
-{% block body -%}
+{% macro card_ul(array, class) -%}
+<ul{% if class %} class='{{ class}}'{% endif %}>
+  {%- for item in array | subarray(0, 3) -%}
+    <li>{{ item }}</li>
+  {%- endfor -%}
+</ul>
+{%- if array.length > 3 -%}
+  <div class='seek-and-hide'>
+    <p><a class='hide-switcher'></a></p>
+    <ul class='hide-content'>
+      {%- for item in array | subarray(3) -%}
+        <li>{{ item }}</li>
+      {%- endfor -%}
+    </ul>
+  </div>
+{%- endif -%}
+{%- endmacro %}
 
-<a href='/' title='На главную'><div id='back'><i class='icon-arrow-left'></i></div></a>
-
-{%- macro card(project) -%}
+{% macro card(project) -%}
 <div class='well project-card'>
   <h1><a href='{% if project.id != 'communa' %}/projects/{{ project.id }}{% else %}/#info{% endif %}'>{{ project.name | escape }}</a></h1>
   {%- if project.description %}<p class='description'>{{ project.description }}</p>{% endif -%}
   <div class='info'>
-    <ul class='updates'>
-{%- for update in project.updates -%}
-<li>{{ update }}</li>
-{%- endfor -%}
-    </ul>
+    {{ card_ul(project.updates, 'updates') }}
 {%- if project.todo -%}
     <p>todo:</p>
-    <ul>
-{%- for todo in project.todo -%}
-<li>{{ todo }}</li>
-{%- endfor -%}
-    </ul>
+    {{ card_ul(project.todo) }}
 {%- endif -%}
   </div>
 </div>
-{%- endmacro -%}
+{%- endmacro %}
+
+{% block body -%}
+
+<a href='/' title='На главную'><div id='back'><i class='icon-arrow-left'></i></div></a>
 
 <div class='container-fluid' style='margin-top:20px'><div class='row-fluid'><div class='span8 offset2'>
   <div class='row-fluid'>

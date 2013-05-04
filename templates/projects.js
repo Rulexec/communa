@@ -15,4 +15,29 @@ $(function() {
             }
         });
     });
+
+    $('.seek-and-hide').each(function() {
+        var div = $(this),
+            a = $('a.hide-switcher', div),
+            ul = $('ul.hide-content', div),
+            showing = true;
+
+        toggle();
+
+        a.click(toggle);
+
+        function toggle() {
+            showing = !showing;
+
+            if (showing) {
+                a.text('… скрыть …');
+                ul.show();
+            } else {
+                a.text('… показать …');
+                ul.hide();
+            }
+
+            return false;
+        }
+    });
 });
