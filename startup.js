@@ -3,7 +3,9 @@ var server = require('./server'),
 
 server.start({
     port: CONFIG.PORT,
-    local: CONFIG.LOCAL
+    local: CONFIG.LOCAL,
+
+    host: CONFIG.HOST
 }, function(error) {
     if (error) {
         console.log('ERROR', error);

@@ -2,7 +2,7 @@ var config;
 
 module.exports = config = {
     LOCAL: Boolean(process.env.LOCAL) && process.env.LOCAL !== 'false',
-    PORT: process.env.PORT || 5000
-};
+    PORT: process.env.PORT || 5000,
 
-//config.
+    HOST: process.env.LOCAL_HOST || 'com.muna.by'
+};
