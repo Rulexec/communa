@@ -30,7 +30,8 @@ app.routeStatic({
 
     '/people/ruliov': page('people/ruliov.html'),
 
-    '/landing/etc': page('landing/etc.html')
+    '/landing/etc': page('landing/etc.html'),
+    '/landing/project': page('landing/project.html')
 });
 
 // Landings with different ?queries (for statistics)
