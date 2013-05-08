@@ -1,0 +1,1 @@
+LOCAL=true LOCAL_HOST=communa.dev:5000 exec node startup.js
