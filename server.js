@@ -21,6 +21,7 @@ var app = photon(
 ).use(photon.common()
 ).use(photon.path()
 ).use(photon.mime('text/html', 'utf-8')
+).use(photon.cache()
 ).extend(photon.routing());
 
 app.routeStatic({
