@@ -7,13 +7,13 @@ var photon = require('photon'),
 
     projects = require('./data/projects');
 
-exports.start = function(options, callback) {
+function start(options, callback) {
 
 if (options.local) {
     // replace aws redirect to local file send
     // and replace page function to non-caching version
     awsFile = staticFile;
-    page = serverUtil._pageLocal;
+    //page = serverUtil._pageLocal;
 }
 
 var app = photon(
@@ -58,10 +58,14 @@ function error404(req, res) {
     res.status(404).end('404');
 }
 
-serverUtil.start(function(error) {
-    if (error) return callback(error);
+app.listen(options.port);
 
-    app.listen(options.port);
-});
+};
 
+exports.start = function(options, callback) {
+    serverUtil.start(function(error) {
+        if (error) return callback(error);
+
+        start(options, callback);
+    });
 };
