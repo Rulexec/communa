@@ -22,19 +22,19 @@ exports.page = function(name, args, options) {
     !options && (options = {});
 
     var data = template.render(name, args);
-    var createdDate = new Date().toUTCString();
-    var maxAge = 18 * 60 * 60;
-    var maxAgeHeader = 'public, max-age=' + maxAge.toString();
+
+    var cacheOptions = {
+        etag: ETag,
+        lastModified: new Date(),
+        maxAge: 18 * 60 * 60
+    };
   
     return function(req, res) {
+        if (res.endIfCached(cacheOptions)) return;
+
         options.mime && res.mime(options.mime);
 
-        if (!res.getHeader('ETag')) res.setHeader('ETag', ETag);
-        if (!res.getHeader('Date')) res.setHeader('Date', new Date().toUTCString());
-        if (!res.getHeader('Cache-Control')) res.setHeader('Cache-Control', maxAgeHeader);
-        if (!res.getHeader('Last-Modified')) res.setHeader('Last-Modified', createdDate);
-
-        res.end(data);
+        res.cache(cacheOptions).end(data);
     };
 };
 exports._pageLocal = function(name, args, options) {
