@@ -20,12 +20,13 @@ var app = photon(
 ).use(photon.hostRedirect(options.host)
 ).use(photon.common()
 ).use(photon.path()
+).use(photon.mime('text/html', 'utf-8')
 ).extend(photon.routing());
 
 app.routeStatic({
     '/': page('index.html', {projects: projects.list}),
     '/favicon.ico': awsFile('favicon.ico'),
-    '/robots.txt': page('robots.txt'),
+    '/robots.txt': page('robots.txt', {}, {mime: 'text/plain'}),
 
     '/projects/': page('projects.html', {projects: projects.status}),
 
