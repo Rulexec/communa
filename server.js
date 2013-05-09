@@ -25,6 +25,7 @@ var app = photon(
 app.routeStatic({
     '/': page('index.html', {projects: projects.list}),
     '/favicon.ico': awsFile('favicon.ico'),
+    '/robots.txt': page('robots.txt'),
 
     '/projects/': page('projects.html', {projects: projects.status}),
 
