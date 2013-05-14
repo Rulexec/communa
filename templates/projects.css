@@ -38,8 +38,8 @@ a.communa-color:hover {
 hr {
     border-top-color: #f0a3a1;
 }
-.span6.next-row {
-    margin-left: 0px;
+.tiles.span6 {
+    margin: 0% 0.641025641025641% !important;
 }
 
 .hide-switcher {

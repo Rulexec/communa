@@ -13,7 +13,7 @@ if (options.local) {
     // replace aws redirect to local file send
     // and replace page function to non-caching version
     awsFile = staticFile;
-    //page = serverUtil._pageLocal;
+    page = serverUtil._pageLocal;
 }
 
 var app = photon(

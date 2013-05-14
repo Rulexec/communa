@@ -49,15 +49,16 @@ var status = exports.status = {
     ]
   }],
 
-  working: [{ // roulette
+  working: [],
+
+  dead: [{ // roulette
     id: 'roulette', name: 'Рулетка',
     description: 'Что делать?',
     updates: [
+      '<i>2013-05-14</i> — нет, не будем. С этого момента или делаем что-то действительно полезное и не надуманное, или ничего.',
       '<i>2013-05-12</i> — идея возродить Тудурулетку.'
     ]
-  }],
-
-  dead: [{ // tags
+  }, { // tags
     id: 'tags', name: '<Теги>*',
     description: 'Найти то, знаю что',
     updates: [
