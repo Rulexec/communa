@@ -58,8 +58,8 @@
   </div>
   <hr>
   <div class='row-fluid'>
-{%- for project in projects.dead -%}{# {% if loop.index0 % 2 == 0 %} next-row{% endif %} #}
-<div class='span6'>{{ card(project) }}</div>
+{%- for project in projects.dead -%}
+<div class='tiles span6'>{{ card(project) }}</div>
 {%- endfor -%}
   </div>
 </div></div></div>
