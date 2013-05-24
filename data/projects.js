@@ -19,6 +19,7 @@ var list = exports.list = [
   {id: 'photon.js', name: 'photon.js'},
   {id: 'code_hardcorius', name: 'Code Hardcorius'},
 ];
+exports.shadowProjects = ['roulette', 'codechat', 'wiki.js', 'codex_hardcorius'];
 
 // for projects.html
 var status = exports.status = {
