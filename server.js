@@ -44,6 +44,10 @@ app.get(RegExp('/landing/etc(?:\\?.*)'), page('landing/etc.html'));
 projects.list.forEach(function(project) {
     app.get('/projects/' + project.id, page('projects/' + project.id + '.html'));
 });
+// Shadow projects (projects with page, but without link in list)
+projects.shadowProjects.forEach(function(projectId) {
+    app.get('/projects/' + projectId, page('projects/' + projectId + '.html'));
+});
 // Static files
 require('./data/static_files').forEach(function(file) {
     app.get('/static/' + file, awsFile(file));
