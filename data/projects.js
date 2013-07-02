@@ -18,6 +18,7 @@ var list = exports.list = [
   {id: 'tags', name: 'Теги'},
   {id: 'photon.js', name: 'photon.js'},
   {id: 'code_hardcorius', name: 'Code Hardcorius'},
+  {id: 'bikeprofile', name: 'Bike Profile'}
 ];
 exports.shadowProjects = ['roulette', 'codechat', 'wiki.js', 'codex_hardcorius'];
 
@@ -47,19 +48,26 @@ var status = exports.status = {
     ]
   }],
 
-  working: [{ // code_hardcorius
+  working: [{ // bikeprofile
+    id: 'bikeprofile', name: 'Bike Profile',
+    description: '42км',
+    updates: [
+      "<i>2013-07-02</i> — реализовал простую html-страничку с картой и небольшим количеством цифр о количестве поездок, протяжённости и её отношению к расстоянию между Брестом и Минском и длиной экватора."
+    ]
+  }],
+
+  dead: [{ // code_hardcorius
     id: 'code_hardcorius', name: 'Code Hardcorius',
     description: "print 'Hello, World!'",
     updates: [
+      '<p><i>2013-06-09</i> — был опубликован «последний» кусочек и, скорее всего, последний.</p>',
       "<p><i>2013-06-06</i> — <a href='http://code.muna.by'>Код</a> достиг <b>0.6</b> версии, осталась лишь часть про архитектуру и безопасность, а затем делать это понятнее и полнее.</p>" +
       "<p>Так же в рамках <i>Кода Хардкориуса</i> планируется начать ещё одно произведение такого же формата, но исключительно по какому-нибудь конкретному языку программирования.</p>",
 
       "<i>2013-05-24</i> — решил написать небольшое произведение по типу <a href='/projects/codex_hardcorius'>Кодекса</a>, но без буквы X. Можно почитать <a href='http://code.muna.by'>наброски</a>.",
       '<i>2013-04-28</i> — находится в состоянии стазиса. Будет возобновлён в каком-нибудь другом виде, либо же продолжен после того, как я разберусь с тем, как можно кого-нибудь научить. Мы работаем над этим.'
     ]
-  }],
-
-  dead: [{ // tags
+  }, { // tags
     id: 'tags', name: '<Теги>*',
     description: 'Найти то, знаю что',
     updates: [
