@@ -34,7 +34,9 @@ app.routeStatic({
     '/people/ruliov': page('people/ruliov.html'),
 
     '/landing/etc': page('landing/etc.html'),
-    '/landing/project': page('landing/project.html')
+    '/landing/project': page('landing/project.html'),
+
+    '/licenses/25': page('25license.txt', {}, {mime: 'text/plain'})
 });
 
 // Landings with different ?queries (for statistics)
