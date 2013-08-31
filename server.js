@@ -3,9 +3,7 @@ var photon = require('photon'),
 
     awsFile = serverUtil.awsFile,
     staticFile = serverUtil.staticFile,
-    page = serverUtil.page,
-
-    projects = require('./data/projects');
+    page = serverUtil.page;
 
 function start(options, callback) {
 
@@ -24,45 +22,29 @@ var app = photon(
 ).use(photon.cache()
 ).extend(photon.routing());
 
+var soonPage = page('index.html');
+
 app.routeStatic({
-    '/': page('index.html', {projects: projects.list}),
+    '/': soonPage,
     '/favicon.ico': awsFile('favicon.ico'),
     '/robots.txt': page('robots.txt', {}, {mime: 'text/plain'}),
-
-    '/projects/': page('projects.html', {projects: projects.status}),
-
-    '/people/ruliov': page('people/ruliov.html'),
-
-    '/landing/etc': page('landing/etc.html'),
-    '/landing/project': page('landing/project.html'),
-
-    '/licenses/25': page('25license.txt', {}, {mime: 'text/plain'})
 });
 
-// Landings with different ?queries (for statistics)
-app.get(RegExp('/landing/etc(?:\\?.*)'), page('landing/etc.html'));
-
-// Project pages
-projects.list.forEach(function(project) {
-    app.get('/projects/' + project.id, page('projects/' + project.id + '.html'));
-});
-// Shadow projects (projects with page, but without link in list)
-projects.shadowProjects.forEach(function(projectId) {
-    app.get('/projects/' + projectId, page('projects/' + projectId + '.html'));
-});
 // Static files
 require('./data/static_files').forEach(function(file) {
     app.get('/static/' + file, awsFile(file));
 });
 
-app.get(/^.*$/, error404);
-app.use(function(req, res, next) {
-    res.status(405).end('405');
-});
+var error404 = soonPage;
 
-function error404(req, res) {
-    res.status(404).end('404');
-}
+//app.get(/^.*$/, error404);
+app.use(function(req, res, next) {
+    if (req.method == 'GET') {
+        error404(req, res);
+    } else {
+        res.status(405).end('405');
+    }
+});
 
 app.listen(options.port);
 
