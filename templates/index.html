@@ -3,85 +3,10 @@
 {% block title %}Коммуна{% endblock %}
 
 {% block head %}
-<style>{% include 'main.css' %}</style>
 <style>{% include 'index.css' %}</style>
-<script>{% include 'index.js' %}</script>
 {% endblock %}
 
 {% block body %}
-
-<div id='to_top' title='К меню'><i class='icon-arrow-up'></i></div>
-
-<div class='header'>
-  <h1>Коммуна</h1>
-  <hr>
-  <ul class='nav nav-pills'>
-    <li><a href='#projects'>Проекты</a></li>
-    <li><a href='#people'>Люди</a></li>
-    <li><a href='#info'>О Коммуне</a></li>
-    <li><a href='#contacts'>Контакты</a></li>
-  </ul>
-</div>
-
-
-<div class='container-fluid'>
-  <div id='projects' class='section row-fluid text-center'>
-    <div class='span6 offset3' style='position:relative'>
-      <h1><a href='/projects/'>Проекты</a></h1>
-      <span style='position:absolute;top:2em;right:0px;' class='muted'>← это ссылка</span> <!-- shi~ -->
-      <div style='clear:both'>
-<a href='#info' class='communa-color'>Коммуна</a>
-{%- for project in projects %}
-<a href='projects/{{ project.id }}'>{{ project.name }}</a>
-{%- endfor -%}
-      </div>
-    </div>
-  </div>
-
-  <div id='people' class='section row-fluid text-center'>
-    <div class='span6 offset3'>
-      <h1>Люди</h1>
-      <div>
-        <a href='people/ruliov'>Александр Рулёв</a>
-      </div>
-    </div>
-  </div>
-
-  <div id='info' class='section row-fluid'>
-    <div class='span6 offset3'>
-      <h1 class='text-center'>О Коммуне</h1>
-      <p>Привет!</p>
-      <p><span class='communa-color'>Коммуна</span> — вымышленная организация, созданная <a href='/people/ruliov' class='communa-color'>Александром Рулёвым</a>.</p>
-      <p>Наша главная цель — делать мир лучше.</p>
-      <p>В данный момент «мы» состоим лишь из одного участника и занимаемся лишь тем, чем умеет этот участник. Но мы очень амбициозны и прогрессивны.</p>
-      <p>Текущий план довольно прост:</p> <!-- Invade. Dominate. Exterminate. -->
-      <ol>
-        <li><p>Создать успешный проект.</p>
-            <div class='muted'>
-              <p>Ха! Ну это ведь элементарно!</p>
-              <p>Успешным будет считаться тот, который будет полезен хотя бы сотне-тысяче человек и не угаснет за месяц-другой.</p>
-            </div>
-        </li>
-        <li><p>Имея проект, найти людей, с которыми мне бы хотелось работать и в которых я бы был уверен.</p>
-            <p class='muted'>Это первые участники <span class='communa-color'>Коммуны</span>.</p>
-        </li>
-        <li><p>Делаем то, что нравится и чего не хватает другим.</p></li>
-        <li><p>Копим ресурсы и используем их, чтобы более эффективно делать мир лучше.</p></li>
-      </ol>
-    </div>
-  </div>
-
-  <div id='contacts' class='section row-fluid text-center'>
-    <div class='span6 offset3'>
-      <h1>Контакты</h1>
-      <p><a href='mailto:rulix.exec@gmail.com'>rulix.exec@gmail.com</a></p>
-      <p>Или же свяжитесь с любым <a href='#people' class='communa-color'>участником проекта</a>.</p>
-    </div>
-  </div>
-
-  <div id='footer' class='top-margin row-fluid text-center'>
-    <small>Писать всякие глупости в footer'е модно. Привет, я Какао! Капитан Какао!</small>
-  </div>
-</div>
-
+<img id='soon' src='{{ awsUrl('images/soon/soon.png') }}'>
+<a id='mail-me-maybe' href='mailto:rulix.exec@gmail.com'>rulix.exec@gmail.com</a>
 {% endblock %}

@@ -1,7 +1,9 @@
 var nunjucks = require('nunjucks'),
 
     aws = require('./aws'),
-    CONFIG = require('./config');
+    CONFIG = require('./config'),
+
+    awsUrl = !CONFIG.LOCAL ? aws.url : function(url) { return CONFIG.PROTOCOL + CONFIG.HOST + '/static/' + url; };
 
 var env = new nunjucks.Environment(new nunjucks.FileSystemLoader('templates'));
 
@@ -16,7 +18,7 @@ env.addFilter('subarray', function(arr, start, length) {
 function addDefaultArgs(args) {
     merge(args, {
         analytics: !CONFIG.LOCAL,
-        awsUrl: aws.url,
+        awsUrl: awsUrl,
     });
 }
 

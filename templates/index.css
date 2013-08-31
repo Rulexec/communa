@@ -1,50 +1,19 @@
-.header {
-    margin-top: 15%;
-}
-.section {
-    margin-top: 30%;
+body {
+    background: #cc0000;
 }
 
-#projects h1 a {
-    color: inherit;
-    font-size: inherit;
-    border-bottom: 1px dotted;
-}
-#projects h1 a:hover {
-    color: #4D0908;
-    text-decoration: none;
-    border-bottom: 1px solid;
-}
-#people a, #projects a {
-    display: inline-block;
-    font-size: 3em;
-    margin: 0.3em;
-}
-#contacts p, #info p {
-    font-family: "Times New Roman", serif;
-    font-size: 1.4em;
-    margin-bottom: 1em;
-}
-
-#to_top {
-    position: fixed;
-    width: 10%;
-    height: 100%;
-    top: 0px;
-    left: 0px;
-    opacity: 0;
-}
-.to_top_hover, #to_top:hover {
-    background: #fcebeb;
-    opacity: 0.75 !important;
-    cursor: pointer;
-}
-#to_top i {
+#soon {
     position: absolute;
-    top: calc(50% - 7px);
-    left: calc(50% - 7px);
+    top: 50%;
+    left: 50%;
+    margin-top: -190px;
+    margin-left: -160px;
 }
 
-#footer {
-    margin-top: 40%;
+#mail-me-maybe {
+    color: #ffd700;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    padding: 3pt;
 }
