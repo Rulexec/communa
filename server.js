@@ -28,6 +28,8 @@ app.routeStatic({
     '/': soonPage,
     '/favicon.ico': awsFile('favicon.ico'),
     '/robots.txt': page('robots.txt', {}, {mime: 'text/plain'}),
+
+    '/people/ruliov': page('ruliov.html')
 });
 
 // Static files
