@@ -10,10 +10,14 @@ body {
     margin-left: -160px;
 }
 
-#mail-me-maybe {
+#footer {
     color: #ffd700;
     position: absolute;
     right: 0px;
     bottom: 0px;
-    padding: 3pt;
+    padding: 5pt;
+    margin: 0px;
+}
+#footer a {
+    color: #ffd700;
 }
