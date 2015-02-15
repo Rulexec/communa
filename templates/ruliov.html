@@ -9,6 +9,7 @@ body {
   font-size: 12pt;
   width: 30em;
   margin: 0 auto;
+  font-family: Georgia, serif;
 }
 body div {
   margin: 4ex 0;
@@ -17,6 +18,10 @@ body div {
 ul li p { margin: 1ex 0; }
 ul li p:first-child { margin-top: 0; }
 ul li p:last-child { margin-bottom: 0; }
+li > ul {
+  margin-left: 1em;
+  margin-bottom: 1ex;
+}
 
 .name {
   margin-bottom: 0;
@@ -64,12 +69,22 @@ ul li p:last-child { margin-bottom: 0; }
 
 <div>
   <ul>
-    <li><b>email:</b> <a href='mailto:rulix.exec@gmail.com'>rulix.exec@gmail.com</a> / <a href='mailto:alexander.ruliov@gmail.com'>alexander.ruliov@gmail.com</a></li>
-    <li><b>ВКонтакте:</b> <a href='https://vk.com/alexander_ruliov'>@alexander_ruliov</a></li>
-    <li style='margin-top: 1.5ex'><span>LinkedIn:</span> <a href='https://www.linkedin.com/pub/alexander-ruliov/27/389/851'>Alexander Ruliov</a></li>
-    <li style='margin-top: 1.5ex'><span>Instagram:</span> <a href='https://instagram.com/alexander.ruliov/'>@alexander.ruliov</a></li>
+    <li><span>email:</span> <a href='mailto:rulix.exec@gmail.com'>rulix.exec@gmail.com</a> / <a href='mailto:alexander.ruliov@gmail.com'>alexander.ruliov@gmail.com</a></li>
+    <li><span>ВКонтакте:</span> <a href='https://vk.com/alexander_ruliov'>@alexander_ruliov</a></li>
+
+    <li style='margin-top: 3ex'>
+      <p>Résumé:</p>
+      <ul>
+        <li><span>Технологии:</span> <a href='https://gist.github.com/Rulexec/7e9ade7ecea307dad917'>gist</a></li>
+        <li><span>Друзья:</span> <a href='https://medium.com/@rulexec/f192471efb2d'>Where you now, my companjera?</a></li>
+      </ul>
+    </li>
+    <li><span>LinkedIn:</span> <a href='https://www.linkedin.com/pub/alexander-ruliov/27/389/851'>Alexander Ruliov</a></li>
+
+    <li style='margin-top: 3ex'><span>Instagram:</span> <a href='https://instagram.com/alexander.ruliov/'>@alexander.ruliov</a></li>
     <li><span>Medium:</span> <a href='http://medium.com/@Rulexec'>@Rulexec</a></li>
-    <li style='margin-top: 3ex'><b>[0; 1):</b> <a href='http://code.muna.by/'>Code Hardcorius</a></li>
+
+    <li style='margin-top: 3ex'><span>[0; 1):</span> <a href='http://code.muna.by/'>Code Hardcorius</a></li>
     <li>
       <p><span>Долгосрочная цель:</span> <a href='https://medium.com/p/49554136ebca'>Triangle</a></p>
       <p>На данный момент всё ещё на стадии поиска решения проблемы создания метатеории <a href='http://homotopytypetheory.org/'>HoTT</a> (формального описания такого типа, элементами которого бы являлись все возможные значения, которые можно построить в HoTT).</p>
