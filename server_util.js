@@ -1,14 +1,6 @@
 var send = require('send'),
-    template = require('./template'),
-    aws = require('./aws');
+    template = require('./template');
 
-exports.awsFile = function(file) {
-    return function(req, res) {
-        res.status(301); // moved permanently
-        res.location(aws.url(file))
-        res.end();
-    }
-};
 exports.staticFile = function(file) {
     return function(req, res){
         send(req, __dirname + '/static/' + file

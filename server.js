@@ -1,16 +1,13 @@
-var photon = require('photon'),
+var photon = require('ruliov-photon-legacy'),
     serverUtil = require('./server_util'),
 
-    awsFile = serverUtil.awsFile,
     staticFile = serverUtil.staticFile,
     page = serverUtil.page;
 
 function start(options, callback) {
 
 if (options.local) {
-    // replace aws redirect to local file send
-    // and replace page function to non-caching version
-    awsFile = staticFile;
+    // replace page function to non-caching version
     page = serverUtil._pageLocal;
 }
 
@@ -26,15 +23,15 @@ var soonPage = page('index.html');
 
 app.routeStatic({
     '/': soonPage,
-    '/favicon.ico': awsFile('favicon.ico'),
+    '/favicon.ico': staticFile('favicon.ico'),
     '/robots.txt': page('robots.txt', {}, {mime: 'text/plain'}),
 
     '/people/ruliov': page('ruliov.html')
 });
 
 // Static files
-require('./data/static_files').forEach(function(file) {
-    app.get('/static/' + file, awsFile(file));
+app.get(/^\/static\/(.+)/, function(req, res, file) {
+  staticFile(file)(req, res);
 });
 
 var error404 = soonPage;

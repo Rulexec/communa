@@ -2,11 +2,80 @@
 
 {% block title %}Александр Рулёв — Коммуна{% endblock %}
 
-{% block body %}
-<p>Привет! Этой странички пока нет. Но она будет, да, но пока мне некогда, лень и не нужно.</p>
-<p>В данный момент я ничего не умею и ничего не достиг. Можно полистать посты в моём <a href='http://medium.com/@Rulexec'>блоге</a>.</p>
-<p>Там же можно найти пост о том, <a href='https://medium.com/p/49554136ebca'>чем я сейчас занимаюсь</a>.</p>
-<p>Из всего, что я вообще доделывал до чего-то более или менее завершённого есть только <a href='http://code.muna.by/'>Code Hardcorius</a>. Он не идеален, но когда-нибудь я вернусь к этому направлению и сделаю, надеюсь, достойный курс.</p>
-<p>Я очень большой лентяй.</p>
-<p>Если вы хотите мне что-то сказать, лучше всего будет если вы напишете мне письмо на <a href='mailto:rulix.exec@gmail.com'>rulix.exec@gmail.com</a>. Если это ну очень важно, то отправьте сообщение во <a href='https://vk.com/alexander_ruliov'>вконтакте</a>.</p>
-{% endblock %}
+{% block head -%}
+<style>
+* { margin: 0; padding: 0; }
+body {
+  font-size: 12pt;
+  width: 30em;
+  margin: 0 auto;
+}
+body div {
+  margin: 4ex 0;
+}
+
+ul li p { margin: 1ex 0; }
+ul li p:first-child { margin-top: 0; }
+ul li p:last-child { margin-bottom: 0; }
+
+.name {
+  margin-bottom: 0;
+}
+.headline {
+  margin-top: 0;
+  font-size: 1em;
+  font-weight: normal;
+  margin-bottom: 3ex;
+}
+.headline .titles {
+  font-style: italic;
+  color: gray;
+}
+.headline .to-survive {
+  text-align: right;
+}
+
+.ssh-rsa {
+  word-wrap: break-word;
+  color: gray;
+  font-size: 0.75em;
+}
+</style>
+{%- endblock %}
+
+{% block body -%}
+<div class='name'><h1>Александр Рулёв</h1></div>
+<div class='headline'>
+  <p class='titles'>
+    <span>Самопровозглашённый самопровозгласитель</span>,
+    <span>человек-диссонанс</span>,
+    <span>перфекционист</span>,
+    <span>не-коммунист в майке с серпом и молотом</span>,
+    <span>любитель длинных титулов</span>,
+    <span>получивший сообщение от Павла Дурова</span>,
+    <span>любящий хвастаться</span>,
+    <span>которого отчислили из университета</span>,
+    <span>чуть было не отправившийся в Дубай</span>,
+    <span>два месяца проживший в небоскрёбе в Москва-сити</span>,
+    <span>убиравший за хорьками</span>
+  </p>
+  <p class='to-survive'>— чтобы выжить.</p>
+</div>
+
+<div>
+  <ul>
+    <li><b>email:</b> <a href='mailto:rulix.exec@gmail.com'>rulix.exec@gmail.com</a> / <a href='mailto:alexander.ruliov@gmail.com'>alexander.ruliov@gmail.com</a></li>
+    <li><b>ВКонтакте:</b> <a href='https://vk.com/alexander_ruliov'>@alexander_ruliov</a></li>
+    <li style='margin-top: 1.5ex'><span>LinkedIn:</span> <a href='https://www.linkedin.com/pub/alexander-ruliov/27/389/851'>Alexander Ruliov</a></li>
+    <li style='margin-top: 1.5ex'><span>Instagram:</span> <a href='https://instagram.com/alexander.ruliov/'>@alexander.ruliov</a></li>
+    <li><span>Medium:</span> <a href='http://medium.com/@Rulexec'>@Rulexec</a></li>
+    <li style='margin-top: 3ex'><b>[0; 1):</b> <a href='http://code.muna.by/'>Code Hardcorius</a></li>
+    <li>
+      <p><span>Долгосрочная цель:</span> <a href='https://medium.com/p/49554136ebca'>Triangle</a></p>
+      <p>На данный момент всё ещё на стадии поиска решения проблемы создания метатеории <a href='http://homotopytypetheory.org/'>HoTT</a> (формального описания такого типа, элементами которого бы являлись все возможные значения, которые можно построить в HoTT).</p>
+    </li>
+  </ul>
+</div>
+
+<div><pre class='ssh-rsa'>ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAqgrLbiEWxLUW/2Wx4ifkD1HJkjvh3eHu8+qKFgG9LY622t9lpEwmhSb/YUF9ecIl+MT5JOJuM6mX1Nqd2vhpJ1QxTSrZRzcoJLGgPwC7x8Wqaf/wpryLaKZMNRke6ho/G5Kby83olsBD4kL8yds2xI5RBLLfYBpgv10fildbn3Ro+1/SK/r8q4j/WSW3gr/PVu75a06+R9Sy9PdATTHICudwwS41g4g0UMiwe/s3C1jnShsLMJZ/ydZJKtp6gGl7WGj+BbbEtiaJiKYXQIGkbVUvjYFLf/QdN0iQyi+Pd85fstHhVJjPxycBEN1oEMIsJ6hm3HiRN1CRqBOu2p1baQ== ruliov@ruliov</pre></div>
+{%- endblock %}

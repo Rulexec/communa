@@ -8,8 +8,9 @@
     "npm": "1.2.x"
   },
   "dependencies": {
-    "photon": "0.8.1",
-    "send": "0.1.x",
+    "ruliov-photon-legacy": "0.0.1",
+
+    "send": "0.11.1",
 
     "nunjucks": "0.1.x"
   }
