@@ -5,13 +5,13 @@
   "private": true,
   "engines": {
     "node": "0.10.x",
-    "npm": "1.2.x"
+    "npm": "2.5.x"
   },
   "dependencies": {
     "ruliov-photon-legacy": "0.0.1",
 
     "send": "0.11.1",
 
-    "nunjucks": "0.1.x"
+    "nunjucks": "1.2.0"
   }
 }

@@ -3,9 +3,9 @@ var send = require('send'),
 
 exports.staticFile = function(file) {
     return function(req, res){
-        send(req, __dirname + '/static/' + file
-        ).maxage(24 * 60 * 60 * 1000 // day
-        ).pipe(res);
+        send(req, __dirname + '/static/' + file, {
+          maxAge: 24 * 60 * 60 * 1000 // day
+        }).pipe(res);
     };
 };
 
